@@ -3,9 +3,12 @@ const dotenv = require('dotenv');
 dotenv.config();
 const dbconnect = require('./config/dbconnect');
 const initRouter = require('./routes');
+const cookieparser = require('cookie-parser')
 
 const app = express();
 const port = process.env.PORT || 5000;
+
+app.use(cookieparser());
 
 // Middleware parse body JSON & form
 app.use(express.json());

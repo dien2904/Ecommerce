@@ -1,9 +1,11 @@
 const router = require('express').Router();
 const ctrl = require('../controller/user');
+const {verifyaccesstoken} = require('../middleware/verifytoken')
 
 // Đăng ký user
 router.post('/register', ctrl.register);
-router.get('/login', ctrl.login);
+router.post('/login', ctrl.login);
+router.get('/current',verifyaccesstoken,ctrl.getcurrent);
 
 module.exports = router;
 
